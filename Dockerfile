@@ -28,6 +28,7 @@ RUN apt-get update && \
     apt-get -y install nodejs build-essential xvfb libfontconfig1 && \
     npm install -g slimerjs@0.906.2 && \
     npm install -g phantomjs@2.1.7 && \
-    npm install -g manet@0.4.15
+    npm install -g manet@0.4.15 && \
+    sed -ie 's/letter/A4/g' /usr/lib/node_modules/manet/src/scripts/screenshot.js
 
 ENTRYPOINT ["/usr/bin/manet"]
