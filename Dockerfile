@@ -25,10 +25,11 @@ EXPOSE 8891
 RUN apt-get update && \
     apt-get -y install curl && \
     curl -sL https://deb.nodesource.com/setup_4.x | /bin/bash - && \
-    apt-get -y install nodejs build-essential xvfb libfontconfig1 && \
-    npm install -g slimerjs@0.906.2 && \
+    apt-get -y install nodejs build-essential libfontconfig1 && \
     npm install -g phantomjs@2.1.7 && \
     npm install -g manet@0.4.15 && \
-    sed -ie 's/letter/A4/g' /usr/lib/node_modules/manet/src/scripts/screenshot.js
+    sed -ie 's/letter/A4/g' /usr/lib/node_modules/manet/src/scripts/screenshot.js && \
+    curl -Lo /usr/local/sbin/init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 && \
+    chmod a+x /usr/local/sbin/init
 
-ENTRYPOINT ["/usr/bin/manet"]
+ENTRYPOINT ["/usr/local/sbin/init", "/usr/bin/manet", "--cache=0", "--cleanupStartup=true", "--cleanupRuntime=true", "--cors=true", "--force=true"]
