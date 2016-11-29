@@ -32,4 +32,4 @@ RUN apt-get update && \
     curl -Lo /usr/local/sbin/init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 && \
     chmod a+x /usr/local/sbin/init
 
-ENTRYPOINT ["/usr/local/sbin/init", "/usr/bin/manet", "--command=timeout\ -s9\ 30\ phantomjs\ --ignore-ssl-errors=true\ --web-security=false", "--cache=0", "--cleanupStartup=true", "--cleanupRuntime=true", "--cors=true", "--force=true"]
+ENTRYPOINT ["/usr/local/sbin/init", "/usr/bin/manet", "--command=timeout -s9 30 phantomjs --ignore-ssl-errors=true --web-security=false", "--cache=0", "--cleanupStartup=true", "--cleanupRuntime=true", "--cors=true", "--force=true"]
