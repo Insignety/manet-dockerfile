@@ -29,6 +29,7 @@ RUN apt-get update && \
     apt-get -y install nodejs build-essential libfontconfig1 xvfb firefox && \
     npm install -g phantomjs-prebuilt slimerjs manet && \
     sed -ie 's/letter/A4/g' /usr/lib/node_modules/manet/src/scripts/screenshot.js && \
+    sed -ie 's/MaxVersion=.*/MaxVersion=*/g' /usr/lib/node_modules/slimerjs/src/application.ini && \
     curl -Lo /usr/local/sbin/init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 && \
     chmod a+x /usr/local/sbin/init
 
