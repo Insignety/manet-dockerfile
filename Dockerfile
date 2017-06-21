@@ -26,7 +26,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get -y install curl && \
     curl -sL https://deb.nodesource.com/setup_6.x | /bin/bash - && \
-    apt-get -y install nodejs build-essential libfontconfig1 xvfb firefox && \
+    apt-get -y install fonts-arphic-ukai fonts-arphic-uming nodejs build-essential libfontconfig1 xvfb firefox && \
     npm install -g phantomjs-prebuilt slimerjs manet && \
     sed -ie 's/letter/A4/g' /usr/lib/node_modules/manet/src/scripts/screenshot.js && \
     sed -ie 's/MaxVersion=.*/MaxVersion=*/g' /usr/lib/node_modules/slimerjs/src/application.ini && \
